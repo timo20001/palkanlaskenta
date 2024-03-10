@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\koulujutut\\ohjelmistokehitys\\projektikansio palautettavaksi\\Palkanlaskentasovellus\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4898B5F5-E28B-4378-8A42-BF16C963F1A6}|Palkanlaskentasovellus\\Palkanlaskentasovellus.csproj|d:\\koulujutut\\ohjelmistokehitys\\projektikansio palautettavaksi\\palkanlaskentasovellus\\palkanlaskentasovellus\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4898B5F5-E28B-4378-8A42-BF16C963F1A6}|Palkanlaskentasovellus\\Palkanlaskentasovellus.csproj|solutionrelative:palkanlaskentasovellus\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 215,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\koulujutut\\ohjelmistokehitys\\projektikansio palautettavaksi\\Palkanlaskentasovellus\\Palkanlaskentasovellus\\Program.cs",
+              "RelativeDocumentMoniker": "Palkanlaskentasovellus\\Program.cs",
+              "ToolTip": "D:\\koulujutut\\ohjelmistokehitys\\projektikansio palautettavaksi\\Palkanlaskentasovellus\\Palkanlaskentasovellus\\Program.cs",
+              "RelativeToolTip": "Palkanlaskentasovellus\\Program.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwA8AAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-01T12:50:13.952Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
