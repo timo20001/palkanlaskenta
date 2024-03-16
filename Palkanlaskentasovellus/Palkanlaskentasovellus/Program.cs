@@ -107,7 +107,9 @@ namespace KolmeValikkoaSovellus
             foreach (var worker in workers)
             {
                 double totalCost = CalculateTotalCost(worker.Salary);
-                Console.WriteLine($"Nimi: {worker.Name}, Palkka: {worker.Salary}, Kokonaiskustannus: {totalCost}");
+                double totalCostAfterAdvanceBooking = AdvanceBooking(worker.Salary);
+
+                Console.WriteLine($"Nimi: {worker.Name}, Palkka: {worker.Salary}, Kokonaiskustannus: {totalCost}, Ennakkopidätyksen jälkeen: {totalCostAfterAdvanceBooking}, Ennakkopidätysmäärä: {worker.Salary - totalCostAfterAdvanceBooking}");
             }
 
             static double CalculateTotalCost(double salary)
@@ -117,6 +119,14 @@ namespace KolmeValikkoaSovellus
                 double additionalCost = salary * additionalCostPercentage;
                 double totalCost = salary + additionalCost;
                 return totalCost;
+            }
+            static double AdvanceBooking(double salary)
+            {
+                // Olettaen että ennakkopidätys kulut ovat 24% kokopalkasta
+                double advanceBookingPercentage = 0.24; // 24% 
+                double advanceBookingDeduction = salary * advanceBookingPercentage;
+                double totalCostAfterAdvanceBooking = salary - advanceBookingDeduction;
+                return totalCostAfterAdvanceBooking;
             }
 
         }
