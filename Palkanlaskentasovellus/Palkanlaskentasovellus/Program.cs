@@ -64,10 +64,10 @@ namespace KolmeValikkoaSovellus
 
             while (!exit)
             {
-                Console.WriteLine("1. Add worker");
-                Console.WriteLine("2. Display all workers");
-                Console.WriteLine("3. Exit");
-                Console.Write("Enter your choice: ");
+                Console.WriteLine("1. Lisää työntekijä");
+                Console.WriteLine("2. Näytä kaikki työntekijät");
+                Console.WriteLine("3. Poistu päävalikkoon");
+                Console.Write("Kirjaa valintasi: ");
                 string choice = Console.ReadLine();
 
                 switch (choice)
@@ -82,7 +82,7 @@ namespace KolmeValikkoaSovellus
                         exit = true;
                         break;
                     default:
-                        Console.WriteLine("Invalid choice. Please try again.");
+                        Console.WriteLine("Väärä valinta. Yritä uudelleen.");
                         break;
                 }
 
@@ -106,28 +106,28 @@ namespace KolmeValikkoaSovellus
 
         static void AddWorker()
         {
-            Console.Write("Enter worker's name: ");
+            Console.Write("Lisää työntekijän nimi: ");
             string name = Console.ReadLine();
 
-            Console.Write("Enter worker's salary: ");
+            Console.Write("Lisää työntekijän palkka: ");
             double salary = double.Parse(Console.ReadLine());
 
             workers.Add(new Worker(name, salary));
-            Console.WriteLine("Worker added successfully.");
+            Console.WriteLine("Työntekijä lisätty onnistuneesti.");
         }
 
         static void DisplayWorkers()
         {
             if (workers.Count == 0)
             {
-                Console.WriteLine("No workers added yet.");
+                Console.WriteLine("Työntekijöitä ei ole vielä lisätty.");
                 return;
             }
 
-            Console.WriteLine("Workers:");
+            Console.WriteLine("Työntekijät:");
             foreach (var worker in workers)
             {
-                Console.WriteLine($"Name: {worker.Name}, Salary: {worker.Salary}");
+                Console.WriteLine($"Nimi: {worker.Name}, Palkka: {worker.Salary}");
             }
         }
     }
