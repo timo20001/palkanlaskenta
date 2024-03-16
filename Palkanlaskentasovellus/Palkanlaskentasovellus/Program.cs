@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json; // Lisää JSON
+using System.IO;
 class Worker
 {
     public string Name { get; set; }
@@ -74,7 +76,7 @@ namespace KolmeValikkoaSovellus
                 {
                     case "1":
                         AddWorker();
-                        break;
+                            break;
                     case "2":
                         DisplayWorkers();
                         break;
@@ -95,6 +97,20 @@ namespace KolmeValikkoaSovellus
         {
 
             Console.WriteLine("Tervetuloa Palkka- ja sivukulutiedot -valikkoon!"); //2 valikko
+
+            static void LoadWorkersFromJson(string fileName)
+            {
+                try
+                {
+                    string jsonString = File.ReadAllText(fileName);
+                    workers = JsonSerializer.Deserialize<List<Worker>>(jsonString);
+                    Console.WriteLine("Työntekijät ladattu JSON-tiedostosta.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Virhe luettaessa tiedostoa: {ex.Message}");
+                }
+            }
 
             if (workers.Count == 0)
             {
@@ -157,8 +173,20 @@ namespace KolmeValikkoaSovellus
         static void kolmasValikko()
         {
             Console.WriteLine("Tervetuloa Tulevat palkkapäivät-valikkoon!"); //3 valikko
-                                                                            
-          
+
+            static void LoadWorkersFromJson(string fileName)
+            {
+                try
+                {
+                    string jsonString = File.ReadAllText(fileName);
+                    workers = JsonSerializer.Deserialize<List<Worker>>(jsonString);
+                    Console.WriteLine("Työntekijät ladattu JSON-tiedostosta.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Virhe luettaessa tiedostoa: {ex.Message}");
+                }
+            }
 
             if (workers.Count == 0)
             {
@@ -222,8 +250,26 @@ namespace KolmeValikkoaSovellus
             Console.Write("Lisää työntekijän nimi: ");
             string name = Console.ReadLine();
 
+
+            static void SaveWorkersToJson(string fileName)
+            {
+                string jsonString = JsonSerializer.Serialize(workers);
+
+                try
+                {
+                    File.WriteAllText(fileName, jsonString);
+                    Console.WriteLine("Työntekijät tallennettu JSON-tiedostoon.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Virhe tallennettaessa tiedostoa: {ex.Message}");
+                }
+            }
+
+
             Console.Write("Lisää työntekijän palkka: ");
             double salary = double.Parse(Console.ReadLine());
+            SaveWorkersToJson("jsonsave");            
 
             workers.Add(new Worker(name, salary));
             Console.WriteLine("Työntekijä lisätty onnistuneesti.");
@@ -231,6 +277,21 @@ namespace KolmeValikkoaSovellus
 
         static void DisplayWorkers()
         {
+            LoadWorkersFromJson("workers.json");
+            static void LoadWorkersFromJson(string fileName)
+            {
+                try
+                {
+                    string jsonString = File.ReadAllText(fileName);
+                    workers = JsonSerializer.Deserialize<List<Worker>>(jsonString);
+                    Console.WriteLine("Työntekijät ladattu JSON-tiedostosta.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Virhe luettaessa tiedostoa: {ex.Message}");
+                }
+            }
+
             if (workers.Count == 0)
             {
                 Console.WriteLine("Työntekijöitä ei ole vielä lisätty.");
