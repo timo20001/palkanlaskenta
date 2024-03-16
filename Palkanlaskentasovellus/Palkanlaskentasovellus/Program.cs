@@ -151,15 +151,69 @@ namespace KolmeValikkoaSovellus
                 return totalCostAfterAdvanceBooking3;
             }
            
-            /*double advanceBookingPercentage = 0.24;*/ // 24% 
-            //double advanceBookingDeduction = salary * advanceBookingPercentage;
       
         }
 
         static void kolmasValikko()
         {
             Console.WriteLine("Tervetuloa Tulevat palkkapäivät-valikkoon!"); //3 valikko
-            // Tähän voi lisätä toiminnallisuutta Terve-valikossa
+                                                                            
+          
+
+            if (workers.Count == 0)
+            {
+                Console.WriteLine("Työntekijöitä ei ole vielä lisätty.");
+                return;
+            }
+
+            Console.WriteLine("Palkka- ja sivukulutiedot tulevalta 30 päivän ajalta:");
+
+            foreach (var worker in workers)
+            {
+                double totalCost = CalculateTotalCost(worker.Salary);
+                double totalCostAfterAdvanceBooking = AdvanceBooking(worker.Salary);
+                double totalCostAfterAdvanceBooking2 = AdditionalCost(worker.Salary);
+                double totalCostAfterAdvanceBooking3 = OtherCost(worker.Salary);
+
+                Console.WriteLine($"Nimi: {worker.Name}, Palkka: {worker.Salary * 30}, Kokonaiskustannus työnantajalle: {totalCost}, Ennakkopidätyksen jälkeen: {totalCostAfterAdvanceBooking}, Ennakkopidätysmäärä: {worker.Salary - totalCostAfterAdvanceBooking}, Nettopalkka työeläke-, työttömyysmaksun ja sairausvakuutuksen jälkeen: {totalCostAfterAdvanceBooking2}, Muut kulut yhteensä {totalCost - totalCostAfterAdvanceBooking3}");
+            }
+
+            static double CalculateTotalCost(double salary)
+            {
+                // Olettaen että muut kulut ovat 20% palkasta
+                double additionalCostPercentage = 0.20;
+                double additionalCost = salary * additionalCostPercentage;
+                double totalCost = (salary + additionalCost) * 30;
+                return totalCost;
+            }
+            static double AdvanceBooking(double salary)
+            {
+                // Olettaen että ennakkopidätys kulut ovat 24% kokopalkasta
+                double advanceBookingPercentage = 0.24; // 24% 
+                double advanceBookingDeduction = salary * advanceBookingPercentage;
+                double totalCostAfterAdvanceBooking = (salary - advanceBookingDeduction) * 30;
+                return totalCostAfterAdvanceBooking;
+            }
+            static double AdditionalCost(double salary) //nettopalkka
+            {
+                //ennakkopidätys
+                double advanceBookingPercentage = 0.24;
+                //Olettaen että työttömyysmaksu on 20€
+                double advanceBookingPercentage2 = 20;
+                //Olettaen että sairaalavakuutusmaksu on 30€
+                double advanceBookingPercentage3 = 30;
+                // Olettaen että työeläkemaksu on 25€ 
+                double advanceBookingPercentage4 = 25;
+
+                double advanceBookingDeduction = salary * advanceBookingPercentage;
+                double totalCostAfterAdvanceBooking2 = ((salary - advanceBookingDeduction) - advanceBookingPercentage2 - advanceBookingPercentage3 - advanceBookingPercentage4) * 30;
+                return totalCostAfterAdvanceBooking2;
+            }
+            static double OtherCost(double salary)  // Muut kaikki kulut laskettuna yhteen
+            {
+                double totalCostAfterAdvanceBooking3 = (salary + 20 + 30 + 25) * 30;
+                return totalCostAfterAdvanceBooking3;
+            }
         }
 
 

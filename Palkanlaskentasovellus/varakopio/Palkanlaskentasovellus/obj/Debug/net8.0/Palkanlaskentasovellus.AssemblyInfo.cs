@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Palkanlaskentasovellus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b972283ed20472b489ba802bf43cc75f3547fe3c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0976ff3a87ee5fa232d61db05c0789746b0d1cb8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Palkanlaskentasovellus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Palkanlaskentasovellus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
