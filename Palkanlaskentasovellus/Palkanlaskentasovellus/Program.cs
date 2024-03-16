@@ -93,8 +93,32 @@ namespace KolmeValikkoaSovellus
 
         static void toinenValikko()
         {
-            Console.WriteLine("Tervetuloa Palkka ja Sivukulut-valikkoon!"); //2 valikko
-            // Tähän voi lisätä toiminnallisuutta Hei-valikossa
+
+            Console.WriteLine("Tervetuloa Palkka- ja sivukulutiedot -valikkoon!"); //2 valikko
+
+            if (workers.Count == 0)
+            {
+                Console.WriteLine("Työntekijöitä ei ole vielä lisätty.");
+                return;
+            }
+
+            Console.WriteLine("Palkka- ja sivukulutiedot:");
+
+            foreach (var worker in workers)
+            {
+                double totalCost = CalculateTotalCost(worker.Salary);
+                Console.WriteLine($"Nimi: {worker.Name}, Palkka: {worker.Salary}, Kokonaiskustannus: {totalCost}");
+            }
+
+            static double CalculateTotalCost(double salary)
+            {
+                // Olettaen että muut kulut ovat 20% palkasta
+                double additionalCostPercentage = 0.20;
+                double additionalCost = salary * additionalCostPercentage;
+                double totalCost = salary + additionalCost;
+                return totalCost;
+            }
+
         }
 
         static void kolmasValikko()
@@ -131,5 +155,6 @@ namespace KolmeValikkoaSovellus
             }
         }
     }
-    
+
+
 }
